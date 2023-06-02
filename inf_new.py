@@ -10,7 +10,7 @@ nltk.download('averaged_perceptron_tagger')
 croatian_stop_words = [
     "i", "ili", "ali", "a", "u", "za", "s", "sa", "o", "po", "na", "nad", "iznad",
     "pod", "ispod", "kroz", "preko", "kao", "tako", "također", "međutim", "no", "bez",
-    "do", "od", "kod", "oko"  # Add more Croatian stop words as needed
+    "do", "od", "kod", "oko"
 ]
 stop_words = set(stopwords.words('english')).union(set(croatian_stop_words))
 
@@ -45,7 +45,7 @@ knowledge_base = {
     "Koje su mogućnosti IoT-a u sektoru sportske industrije?" : "IoT pruža mogućnosti za praćenje sportskih performansi, analizu podataka o treningu, poboljšanje sigurnosti sportaša i poboljšanje iskustva gledatelja.",
     "Kako se IoT primjenjuje u sektoru automobila i povezane mobilnosti?" : "IoT se koristi u sektoru automobila i povezane mobilnosti za praćenje vozila, upravljanje prometom, poboljšanje sigurnosti na cestama i pružanje pametnih usluga u vozilima.",
     "Koje su perspektive razvoja IoT-a u budućnosti?" : "Perspektive razvoja IoT-a uključuju sve veći broj povezanih uređaja, napredak u umjetnoj inteligenciji, razvoj 5G mreže i širenje IoT primjena u različitim sektorima.",
-    # Add more questions and answers as needed
+
 }
 
 def preprocess_input(input_text):
@@ -54,18 +54,13 @@ def preprocess_input(input_text):
     filtered_tokens = [token for token in tokens if token not in stop_words]
     
     return ' '.join(filtered_tokens)
-
 def find_best_match(question):
     preprocessed_question = preprocess_input(question)
-    
     best_match = None
     best_score = 0
-    
     for q, a in knowledge_base.items():
         preprocessed_q = preprocess_input(q)
-        
         score = len(set(preprocessed_question.split()) & set(preprocessed_q.split()))
-        
         if score > best_score:
             best_score = score
             best_match = a
@@ -73,9 +68,9 @@ def find_best_match(question):
     return best_match
 
 while True:
-    question = input("Pitaj me pitanje: ")
+    question = input("Pitaj me: ")
     
-    if question.lower() == "exit":
+    if question.lower() == "izlaz":
         break
     
     answer = find_best_match(question)
@@ -87,8 +82,5 @@ while True:
                 print("Mirko:", line)
             else:
                 print("      ",line)
-    else:
-        print("Mirko: Oprosti, nemam odgovor na to pitanje.")
-      print("      ",line)
     else:
         print("Mirko: Oprosti, nemam odgovor na to pitanje.")
