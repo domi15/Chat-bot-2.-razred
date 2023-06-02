@@ -89,7 +89,7 @@ def find_best_match(question):
 # Main loop for the bot
 while True:
     # Get user input
-    question = input("Ask me a question: ")
+    question = input("Pitaj me pitanje: ")
     
     # Check for exit condition
     if question.lower() == "exit":
@@ -107,7 +107,7 @@ while True:
             else:
                 print("      ",line)
     else:
-        print("Bot: Sorry, I don't have an answer to that question.")
+        print("Mirko: Oprosti, nemam odgovor na to pitanje.")
       print("      ",line)
     else:
-        print("Bot: Sorry, I don't have an answer to that question.")
+        print("Mirko: Oprosti, nemam odgovor na to pitanje.")
