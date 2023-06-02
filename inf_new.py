@@ -3,12 +3,10 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import textwrap
 
-# Download Croatian resources
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
-# Set up stop words
 croatian_stop_words = [
     "i", "ili", "ali", "a", "u", "za", "s", "sa", "o", "po", "na", "nad", "iznad",
     "pod", "ispod", "kroz", "preko", "kao", "tako", "također", "međutim", "no", "bez",
@@ -16,7 +14,6 @@ croatian_stop_words = [
 ]
 stop_words = set(stopwords.words('english')).union(set(croatian_stop_words))
 
-# Define your knowledge base
 knowledge_base = {
     "Što je IoT": "IoT je mreža fizičkih uređaja, vozila, kućanskih aparata i drugih predmeta koji su opremljeni senzorima, softverom i mrežnom povezanošću kako bi mogli razmjenjivati podatke i međusobno komunicirati.",
     "Što znači Internet of Things": "Internet stvari (IoT) opisuje fizičke objekte (ili grupe takvih objekata) sa senzorima, sposobnošću obrade, softverom i drugim tehnologijama koje se povezuju i razmjenjuju podatke s drugim uređajima i sustavima putem interneta ili drugih komunikacijskih mreža. Internet stvari smatra se pogrešnim nazivom jer uređaji ne moraju biti povezani s javnim internetom, samo trebaju biti povezani s mrežom i imati mogućnost individualne adrese.",
@@ -51,56 +48,40 @@ knowledge_base = {
     # Add more questions and answers as needed
 }
 
-# Function to preprocess user input
 def preprocess_input(input_text):
-    # Tokenize the input text
     tokens = word_tokenize(input_text.lower())
     
-    # Remove stop words
     filtered_tokens = [token for token in tokens if token not in stop_words]
     
-    # Return the preprocessed tokens as a string
     return ' '.join(filtered_tokens)
 
-# Function to find the best match in the knowledge base
 def find_best_match(question):
-    # Preprocess the input question
     preprocessed_question = preprocess_input(question)
     
-    # Initialize variables for best match
     best_match = None
     best_score = 0
     
-    # Iterate over the knowledge base
     for q, a in knowledge_base.items():
-        # Preprocess each question in the knowledge base
         preprocessed_q = preprocess_input(q)
         
-        # Calculate similarity score using a simple word overlap approach
         score = len(set(preprocessed_question.split()) & set(preprocessed_q.split()))
         
-        # Update best match if the current score is higher
         if score > best_score:
             best_score = score
             best_match = a
     
     return best_match
 
-# Main loop for the bot
 while True:
-    # Get user input
     question = input("Pitaj me pitanje: ")
     
-    # Check for exit condition
     if question.lower() == "exit":
         break
     
-    # Find the best match in the knowledge base
     answer = find_best_match(question)
     
-    # Print the answer
     if answer:
-        wrapped_lines = textwrap.wrap(answer, width=80)  # Adjust the width as needed
+        wrapped_lines = textwrap.wrap(answer, width=80)
         for i, line in enumerate(wrapped_lines):
             if i == 0:
                 print("Mirko:", line)
