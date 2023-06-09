@@ -23,11 +23,11 @@ Projekt može biti proširen i poboljšan dodavanjem dodatnih značajki, kao št
 
 Izvori<br>
 Dokumentacija biblioteke textwrap<br>
-"Internet of Things" - Wikipedia<br>
-"What Is the Internet of Things (IoT)?" - IBM<br>
-"Internet of Things (IoT) - Overview" - Microsoft Azure<br>
-"A Gentle Introduction to IoT" - IoT For All<br>
-"Introduction to Internet of Things (IoT)" - Oracle<br>
-"The Basics of the Internet of Things (IoT)" - Cisco<br>
+["Internet of Things" - Wikipedia]([https://www.wikipedia.co](https://en.wikipedia.org/wiki/Internet_of_things)m)<br>
+["What Is the Internet of Things (IoT)?" - IBM](https://www.ibm.com/blog/what-is-the-iot/)<br>
+["Internet of Things (IoT) - Overview" - Microsoft Azure](https://learn.microsoft.com/en-us/azure/iot/iot-introduction)(<br>
+["A Gentle Introduction to IoT" - IoT For All]<br>
+["Introduction to Internet of Things (IoT)" - Oracle]<br>
+["The Basics of the Internet of Things (IoT)" - Cisco]<br>
 
   
